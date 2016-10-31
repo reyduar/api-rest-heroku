@@ -37,6 +37,13 @@ The project uses:
 ### Running the Application
 --------------------------------------
 
+### Running in Heroku
+
+You can test in Heroku [here](https://heroku-api-rest.herokuapp.com)
+
+
+### Running Local environment
+
 You can run a Spring Boot application from your IDE as a simple Java application, however, first you will need to import your project. Import steps will vary depending on your IDE and build system. Most IDEs can import Maven projects directly, for example Eclipse users can select `Import…​` → `Existing Maven Projects` from the File menu.
 
 So you can run too with spring boot maven with the following command line in the project root directory: 
