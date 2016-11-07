@@ -12,26 +12,17 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="users")
+@Document(collection="photos")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+public class Photo {
 
 	@Id
 	private String  id;
-	private String firsName;
-	private String lastName;
-	private String email;
-	private String phone;
-	private String role;
-	private String password;
-	private String avatar;
-	private Boolean active;
-	private String facebook;
-	private Integer limitProperties;
+	private String name;
 	private String created;
-	private String observ;
-	private String birthday;
+	private String property;
+	private String createBy;
 
 }
