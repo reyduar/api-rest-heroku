@@ -27,4 +27,5 @@ public class Bookmark {
 	private String url;
 	private String type;
 	private String code;
+	private String image;
 }
