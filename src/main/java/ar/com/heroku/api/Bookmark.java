@@ -28,4 +28,7 @@ public class Bookmark {
 	private String type;
 	private String code;
 	private String image;
+	private String category;
+	private String tags;
+	private String createdDT;
 }
