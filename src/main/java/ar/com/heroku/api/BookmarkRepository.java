@@ -18,7 +18,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface BookmarkRepository extends CrudRepository<Bookmark, String> {
 
 	/**
-	 * URL http://localhost:8080/bookmarks/search/findByType?type=Blog
+	 * URL /bookmarks/search/findByType?type=Blog
 	 * @param type
 	 * @return
 	 */
@@ -26,7 +26,7 @@ public interface BookmarkRepository extends CrudRepository<Bookmark, String> {
 	List<Bookmark> findByType(@Param("type") String type);
 	
 	/**
-	 * URL http://localhost:8080/bookmarks/search/findByAuthor?author=a
+	 * URL /bookmarks/search/findByAuthor?author=a
 	 * @param author
 	 * @return
 	 */
@@ -34,7 +34,7 @@ public interface BookmarkRepository extends CrudRepository<Bookmark, String> {
 	List<Bookmark> findByAuthor(@Param("author") String author);
 	
 	/**
-	 * URL http://localhost:8080/bookmarks/search/findByName?name=Routing
+	 * URL /bookmarks/search/findByName?name=Routing
 	 * @param name
 	 * @return
 	 */
@@ -42,7 +42,7 @@ public interface BookmarkRepository extends CrudRepository<Bookmark, String> {
 	List<Bookmark> findByName(@Param("name") String name);
 	
 	/**
-	 * URL http://localhost:8080/bookmarks/search/findBySearches?name=Routing&type=Blog&author=&page=0&size=1
+	 * URL /bookmarks/search/findBySearches?name=Routing&type=Blog&author=&page=0&size=1
 	 * @param name
 	 * @param type
 	 * @param author
@@ -50,6 +50,15 @@ public interface BookmarkRepository extends CrudRepository<Bookmark, String> {
 	 * @return
 	 */
 	@Query("{$or:[ { name : {$regex: ?0 }},{ type : {$regex: ?1 }},{ author : {$regex: ?2 }} ]}")
-	Page<Bookmark> findBySearches (@Param("name") String name, @Param("type") String type, @Param("author") String author, Pageable pageRequest);
+	Page<Bookmark> findByFilters (@Param("name") String name, @Param("type") String type, @Param("author") String author, Pageable pageRequest);
+	
+	/**
+	 * URL /bookmarks/search/findBySearches?term=&page=1&size=10
+	 * @param term
+	 * @param pageRequest
+	 * @return
+	 */
+	@Query(value = "{$or:[ { 'name' : {$regex: ?0, $options:'i' }},{ 'type' : {$regex: ?0, $options:'i' }},{ 'author' : {$regex: ?0, $options:'i' }} ]}")
+	Page<Bookmark> findBySearches(@Param("term") String term, Pageable pageRequest);
 	
 }
